@@ -1,0 +1,67 @@
++------------------+        +------------------+
+|      Book        |        |      Author      |
++------------------+        +------------------+
+| -title: String   |        | -name: String    |
+| -ISBN: String    |        | -bio: String     |
+| -price: double   |        +------------------+
+| -publicationDate:Date     | +writeBook(Book): void  |
++------------------+        +------------------+
+| +getTitle(): String       |
+| +getISBN(): String        |
+| +getPrice(): double       |
+| +getPublicationDate(): Date|
+| +addReview(Review): void  |
+| +getReviews(): List<Review>|
++------------------+        | 1..*             |
+       | 1..*               +-----^-----+      |
+       |                    |           |      |
+       |                    |           |      |
++------------------+        |           |      |
+|      Review      |        |           |      |
++------------------+        |           |      |
+| -rating: int     |        |           |      |
+| -comment: String |        |           |      |
+| -date: Date      |        |           |      |
++------------------+        |           |      |
+| +getRating(): int          |           |      |
+| +getComment(): String      |           |      |
+| +getDate(): Date           |           |      |
++------------------+        |           |      |
+       ^                    |           |      |
+       | 1..*               |           |      |
+       |                    |           |      |
++------------------+        |           |      |
+|     Customer     |        |           |      |
++------------------+        |           |      |
+| -name: String    |        |           |      |
+| -email: String   |        |           |      |
+| -address: String |        |           |      |
++------------------+        +-----------+------+
+| +getName(): String          1          | 1
+| +getEmail(): String                   |
+| +getAddress(): String                 |
+| +writeReview(Review): void            |
+| +addToCart(Book): void                |
+| +placeOrder(): Order                  |
++------------------+        +------------------+
+       | 1                   |      Order       |
+       |                     +------------------+
+       |                     | -orderDate: Date |
++------------------+        | -totalAmount: double |
+|  ShoppingCart    |        +------------------+
++------------------+        | +getOrderDate(): Date |
+| -dateCreated: Date        | +getTotalAmount(): double |
++------------------+        +------------------+
+| +getDateCreated(): Date   |
+| +addBook(Book): void      |
+| +removeBook(Book): void   |
+| +getBooks(): List<Book>   |
++------------------+
+       ^
+       | 1
+       |
++------------------+
+|  contains        |
+| ---------------> | 0..*
++------------------+
+
